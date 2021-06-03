@@ -1,0 +1,121 @@
+﻿<Window x:Class="WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF"
+        mc:Ignorable="d"
+        xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
+        Title="MainWindow" Height="509" Width="918">
+
+
+
+    <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" Margin="0,0,2,1">
+        <StackPanel Name="root" Margin="10,0,577,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <ListBox 
+                    Height="258" 
+                    Width="317" 
+                    HorizontalAlignment="Left"
+                    ItemsSource="{Binding GetFlightName}"
+                    SelectedItem="{Binding FlightName, UpdateSourceTrigger=PropertyChanged}" Background="#FF99C7D4" VerticalAlignment="Center"
+                    />
+            <Button
+                    MinWidth="200"
+                    Margin="5,5,0,5"
+                    Command="{Binding InfoCommand}"
+                    Content="Info"
+                    Width="312" Background="#FF248EBF" VerticalAlignment="Center" 
+                    />
+            <UniformGrid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Columns="2" HorizontalAlignment="Left" VerticalAlignment="Center" Height="50" Width="316">
+                <TextBlock
+                                    Margin="10"
+                                    VerticalAlignment="Center"
+                                    Text="Take off time: " />
+
+                <TextBox
+                                    Margin="10"
+                                    VerticalAlignment="Center"
+                                    AcceptsReturn="True"
+                                    AcceptsTab="True"
+                                    Text="{Binding FlightTime}"
+                                    IsReadOnly="True"
+                                    TextWrapping="Wrap" />
+            </UniformGrid>
+
+            <UniformGrid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Columns="2" HorizontalAlignment="Left" VerticalAlignment="Center" Height="50" Width="316">
+                <TextBlock
+                                    Margin="10"
+                                    VerticalAlignment="Center"
+                                    Text="Plane: " />
+
+                <TextBox
+                                    Margin="10"
+                                    VerticalAlignment="Center"
+                                    AcceptsReturn="True"
+                                    AcceptsTab="True"
+                                    Text="{Binding FlightPlane}"
+                                    IsReadOnly="True"
+                                    TextWrapping="Wrap" />
+            </UniformGrid>
+
+            <!--
+                <DataGrid Height="258" Width="379" ItemsSource="{Binding FlightList}" AutoGenerateColumns="False" HorizontalAlignment="Left" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Date" Binding="{Binding Time}"/>
+                        <DataGridTextColumn Header="DelayTime" Binding="{Binding GetDelay}"/>
+                        <DataGridTextColumn Header="Plane" Binding="{Binding Plane}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                -->
+
+        </StackPanel>
+        <StackPanel Name="Panel1" Margin="380,0,210,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="318">
+            <ListBox 
+                    Height="258" 
+                    Width="317"
+                    ItemsSource="{Binding GetListOfPassenger}" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FF99C7D4"
+                    />
+            <Button
+                    MinWidth="200"
+                    Margin="0,5"
+                    Command="{Binding SaveCommand}"
+                    Content="Save" Background="#FF248EBF" VerticalAlignment="Center" 
+                    />
+            <UniformGrid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Columns="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Margin="0,0,1,0" Width="317">
+                <TextBlock
+                                    Margin="10"
+                                    VerticalAlignment="Center"
+                                    Text="DelayTime: " />
+
+                <TextBox 
+                                    
+                                    Margin="10"
+                                    VerticalAlignment="Center"
+                                    AcceptsReturn="True"
+                                    AcceptsTab="True"
+                                    Text="{Binding FlightDelayTime, UpdateSourceTrigger=PropertyChanged}"
+                                    IsReadOnly="False"
+                                    TextWrapping="Wrap" />
+            </UniformGrid>
+
+            <UniformGrid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Columns="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Margin="0,0,1,0" Width="317">
+                <TextBlock
+                                    Margin="10"
+                                    VerticalAlignment="Center"
+                                    Text="LastBuyTime: " />
+
+                <TextBox
+                                    Margin="10"
+                                    VerticalAlignment="Center"
+                                    AcceptsReturn="True"
+                                    AcceptsTab="True"
+                                    Text="{Binding FlightLastBuyTime, UpdateSourceTrigger=PropertyChanged}"
+                                    IsReadOnly="False"
+                                    TextWrapping="Wrap" />
+            </UniformGrid>
+        </StackPanel>
+
+
+    </Grid>
+</Window>
